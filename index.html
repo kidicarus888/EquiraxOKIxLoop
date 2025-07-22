@@ -64,19 +64,28 @@
             border-bottom: none;
         }
 
+        .presentation-container {
+            position: relative;
+            width: 100vw;
+            height: 100vh;
+            overflow: hidden;
+        }
+
+        /* Updated slide CSS for direct display control */
         .slide {
-            display: none;
-            min-height: calc(100vh - 80px); /* Adjust based on header/footer height */
-            padding: 2rem;
-            box-sizing: border-box;
-            display: flex;
-            flex-direction: column;
+            display: none; /* Hidden by default */
+            width: 100%;
+            height: 100%;
+            flex-direction: column; /* Ensure content stacks vertically */
             justify-content: center;
             align-items: center;
             text-align: center;
+            padding: 2rem;
+            box-sizing: border-box;
+            overflow-y: auto; /* Allow scrolling within a slide if content overflows */
         }
         .slide.active {
-            display: flex;
+            display: flex; /* Show active slide */
         }
         .slide-content {
             max-width: 1000px;
@@ -121,6 +130,7 @@
         <section class="slide active" id="slide-1">
             <div class="slide-content">
                 <div class="flex justify-center items-center space-x-6 mb-6">
+                    <!-- Replace src with actual logo URLs -->
                     <img src="https://placehold.co/120x60/005F73/FFFFFF?text=OKI+Palembang" alt="OKI Palembang Logo" class="h-12 rounded-md shadow-sm">
                     <img src="https://placehold.co/120x60/0A9396/FFFFFF?text=Equira+Life" alt="Equira Life Logo" class="h-12 rounded-md shadow-sm">
                     <img src="https://placehold.co/120x60/94D2BD/005F73?text=Loop+Health" alt="Loop Health Logo" class="h-12 rounded-md shadow-sm">
@@ -171,12 +181,12 @@
                 </div>
                 <div class="mt-6 p-4 bg-gray-50 rounded-lg border border-gray-200">
                     <h3 class="font-bold text-xl brand-text-secondary mb-2">HbA1c Breakdown (of 45 enrolled):</h3>
-                    <ul class="list-disc list-inside text-gray-700 space-y-1">
+                    <ul class="list-disc list-inside text-gray-700 text-sm space-y-1">
                         <li><strong class="brand-text-primary">28 participants</strong> (62%) had HbA1c ≥ 6.5% (indicating diabetes).</li>
                         <li><strong class="brand-text-primary">8 participants</strong> (18%) had HbA1c between 5.7–6.4% (indicating prediabetes).</li>
                         <li><strong class="brand-text-primary">9 participants</strong> (20%) had HbA1c < 5.7% (indicating normal blood sugar levels; ongoing monitoring is crucial as HbA1c levels can fluctuate).</li>
                     </ul>
-                    <p class="text-sm text-gray-500 mt-4">
+                    <p class="text-xs text-gray-500 mt-4">
                         All 45 participants were selected for enrollment based on a confirmed diabetes diagnosis through Medical Check-Ups (MCUs) or medical claims data.
                     </p>
                 </div>
@@ -364,10 +374,11 @@
                         <h3 class="font-bold mt-2 brand-text-primary">Showed Blood Sugar Reductions</h3>
                         <p class="text-sm text-gray-500">Of users who actively logged blood sugar readings (approx. 14 out of 21 active users showed reductions).</p>
                     </div>
-                    <div class="kpi-card brand-bg-secondary text-white">
-                        <p class="text-5xl font-extrabold">Avg. 23.5<span class="text-3xl">mg/dL</span></p>
-                        <h3 class="font-bold mt-2">Avg. BS Reduction</h3>
-                        <p class="text-sm text-white/80">Combined average reduction in Fasting (GDP) and Random (GDS) Blood Sugar.</p>
+                    <div class="kpi-card brand-bg-secondary text-white flex flex-col justify-center items-center">
+                        <h3 class="font-bold text-xl mb-2">Avg. BS Reduction</h3>
+                        <p class="text-3xl font-extrabold">GDP: 12.4<span class="text-xl">mg/dL</span></p>
+                        <p class="text-3xl font-extrabold">GDS: 34.6<span class="text-xl">mg/dL</span></p>
+                        <p class="text-sm text-white/80 mt-2">Fasting & Random Glucose reductions, indicating improvement.</p>
                     </div>
                     <div class="kpi-card">
                          <div class="relative w-32 h-32 mx-auto">
@@ -376,6 +387,7 @@
                         </div>
                         <h3 class="font-bold mt-2 brand-text-primary">Recorded Weight Loss</h3>
                         <p class="text-sm text-gray-500">Of users who consistently logged their weight (4 out of 7 users recorded weight loss).</p>
+                        <p class="text-sm text-gray-500 mt-1">Total: 3.0 kg lost.</p>
                     </div>
                 </div>
                 <div class="mt-8 text-center max-w-3xl mx-auto">
@@ -383,11 +395,6 @@
                     <ul class="list-disc list-inside text-gray-600 space-y-2">
                         <li><strong class="font-semibold">M.:</strong> GDS reduced from <strong class="font-semibold">327 → 227 mg/dL</strong>.</li>
                         <li><strong class="font-semibold">A.F.:</strong> GDS reduced from <strong class="font-semibold">361 → 132 mg/dL</strong>.</li>
-                    </ul>
-                    <h3 class="font-bold text-xl brand-text-primary mt-6 mb-4">Detailed Average Blood Sugar Reduction:</h3>
-                    <ul class="list-disc list-inside text-gray-600 space-y-2">
-                        <li><strong class="font-semibold">GDP (Glukosa Darah Puasa / Fasting Blood Sugar):</strong> <strong class="font-semibold">12.4 mg/dL</strong> reduction.</li>
-                        <li><strong class="font-semibold">GDS (Glukosa Darah Sewaktu / Random Blood Sugar):</strong> <strong class="font-semibold">34.6 mg/dL</strong> reduction, which could indicate improvement.</li>
                     </ul>
                     <p class="text-sm text-gray-500 mt-4">Note: HbA1c testing is scheduled for Month 6 and Month 12 to validate long-term clinical outcomes.</p>
                 </div>
@@ -408,6 +415,7 @@
                             <li><strong class="font-semibold">7 users</strong> logged body weight, with <strong class="font-semibold">4</strong> of them recording weight loss.</li>
                             <li>Food and physical activity tracking are currently limited, indicating an area for increased focus.</li>
                         </ul>
+
                     </div>
                     <div class="p-6 bg-gray-50 rounded-lg border-2 brand-border-primary">
                         <h3 class="font-bold text-xl brand-text-secondary mb-4">Opportunity for Growth:</h3>
@@ -455,7 +463,7 @@
 
     <footer class="navigation-controls">
         <button id="prevSlide">Previous</button>
-        <span id="slideIndicator">Slide 1 of 12</span>
+        <span id="slideIndicator">Slide 1 of 11</span>
         <button id="nextSlide">Next</button>
     </footer>
 
@@ -469,7 +477,23 @@
         const prevButton = document.getElementById('prevSlide');
         const nextButton = document.getElementById('nextSlide');
 
-        const totalSlides = slides.length;
+        const totalSlides = slides.length; // Dynamically get total slides
+
+        // Function to destroy all chart instances
+        function destroyAllCharts() {
+            if (hba1cChartInstance) {
+                hba1cChartInstance.destroy();
+                hba1cChartInstance = null;
+            }
+            if (bsReductionChartInstance) {
+                bsReductionChartInstance.destroy();
+                bsReductionChartInstance = null;
+            }
+            if (weightLossChartInstance) {
+                weightLossChartInstance.destroy();
+                weightLossChartInstance = null;
+            }
+        }
 
         function updateSlideIndicator() {
             slideIndicator.textContent = `Slide ${currentSlide + 1} of ${totalSlides}`;
@@ -478,15 +502,17 @@
         }
 
         function showSlide(index) {
+            // Destroy all charts before changing slides
+            destroyAllCharts();
+
             slides.forEach((slide, i) => {
-                slide.classList.toggle('active', i === index);
-                if (i === index) {
-                    slide.scrollTop = 0; // Reset scroll position for new slide
-                }
+                slide.classList.remove('active'); // Hide all slides first
             });
+            slides[index].classList.add('active'); // Show only the active slide
+
             currentSlide = index;
             updateSlideIndicator();
-            // Re-render charts when their slide becomes active to ensure responsiveness
+            // Re-render charts for the newly active slide
             initializeCharts();
         }
 
@@ -503,6 +529,7 @@
         }
 
         function initializeCharts() {
+            // Define shared options at the top of the function
             const tooltipTitleCallback = (tooltipItems) => {
                 const item = tooltipItems[0];
                 let label = item.chart.data.labels[item.dataIndex];
@@ -554,9 +581,6 @@
             // HbA1c Chart
             const hba1cCanvas = document.getElementById('hba1cChart');
             if (hba1cCanvas && hba1cCanvas.closest('.slide.active')) {
-                if (hba1cChartInstance) {
-                    hba1cChartInstance.destroy();
-                }
                 const hba1cCtx = hba1cCanvas.getContext('2d');
                 hba1cChartInstance = new Chart(hba1cCtx, {
                     type: 'doughnut',
@@ -607,16 +631,10 @@
                         }
                     }
                 });
-            } else if (hba1cChartInstance) {
-                hba1cChartInstance.destroy();
-                hba1cChartInstance = null;
             }
 
             const bsReductionCanvas = document.getElementById('bsReductionChart');
             if (bsReductionCanvas && bsReductionCanvas.closest('.slide.active')) {
-                if (bsReductionChartInstance) {
-                    bsReductionChartInstance.destroy();
-                }
                 const bsReductionCtx = bsReductionCanvas.getContext('2d');
                 bsReductionChartInstance = new Chart(bsReductionCtx, {
                     type: 'doughnut',
@@ -632,16 +650,10 @@
                     },
                     options: sharedDoughnutOptions
                 });
-            } else if (bsReductionChartInstance) {
-                bsReductionChartInstance.destroy();
-                bsReductionChartInstance = null;
             }
             
             const weightLossCanvas = document.getElementById('weightLossChart');
             if (weightLossCanvas && weightLossCanvas.closest('.slide.active')) {
-                if (weightLossChartInstance) {
-                    weightLossChartInstance.destroy();
-                }
                 const weightLossCtx = weightLossCanvas.getContext('2d');
                 weightLossChartInstance = new Chart(weightLossCtx, {
                     type: 'doughnut',
@@ -657,9 +669,6 @@
                     },
                     options: sharedDoughnutOptions
                 });
-            } else if (weightLossChartInstance) {
-                weightLossChartInstance.destroy();
-                weightLossChartInstance = null;
             }
         }
 
@@ -677,7 +686,6 @@
 
         // Initial setup
         showSlide(0); // Show the first slide
-        initializeCharts(); // Initialize charts for the first slide
     </script>
 </body>
 </html>
