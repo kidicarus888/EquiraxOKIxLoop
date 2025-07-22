@@ -1,0 +1,683 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OKI x Equira x Loop | Program Presentation</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f0f4f8;
+            overflow: hidden; /* Hide scrollbar for presentation mode */
+        }
+        .brand-text-primary { color: #005F73; }
+        .brand-text-secondary { color: #0A9396; }
+        .brand-text-accent { color: #EE9B00; }
+        .brand-bg-primary { background-color: #005F73; }
+        .brand-bg-secondary { background-color: #0A9396; }
+        .brand-bg-accent { background-color: #EE9B00; }
+        .brand-border-primary { border-color: #005F73; }
+        .brand-border-accent { border-color: #EE9B00; }
+
+        .chart-container {
+            position: relative;
+            width: 100%;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+            height: 300px;
+            max-height: 40vh;
+        }
+        @media (min-width: 768px) {
+            .chart-container {
+                height: 350px;
+            }
+        }
+        .kpi-card {
+            background-color: white;
+            border-radius: 1rem;
+            padding: 1.5rem;
+            box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.05), 0 4px 6px -4px rgb(0 0 0 / 0.05);
+            text-align: center;
+            border: 1px solid #e5e7eb;
+        }
+        table th, table td {
+            padding: 0.75rem;
+            text-align: left;
+        }
+        table thead th {
+            background-color: #0A9396;
+            color: white;
+        }
+        table tbody tr:nth-child(even) {
+            background-color: #f9fafb;
+        }
+        table tbody tr {
+            border-bottom: 1px solid #e5e7eb;
+        }
+        table tbody tr:last-child {
+            border-bottom: none;
+        }
+
+        .slide {
+            display: none;
+            min-height: calc(100vh - 80px); /* Adjust based on header/footer height */
+            padding: 2rem;
+            box-sizing: border-box;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+        }
+        .slide.active {
+            display: flex;
+        }
+        .slide-content {
+            max-width: 1000px;
+            width: 100%;
+            margin: auto;
+        }
+        .navigation-controls {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background-color: #005F73;
+            color: white;
+            padding: 1rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 1000;
+        }
+        .navigation-controls button {
+            background-color: #0A9396;
+            color: white;
+            padding: 0.5rem 1rem;
+            border-radius: 0.5rem;
+            font-weight: 600;
+            transition: background-color 0.2s ease-in-out;
+        }
+        .navigation-controls button:hover:not(:disabled) {
+            background-color: #005F73;
+        }
+        .navigation-controls button:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+        }
+    </style>
+</head>
+<body class="text-gray-700">
+
+    <div class="presentation-container">
+        
+        <!-- Slide 1: Cover Slide -->
+        <section class="slide active" id="slide-1">
+            <div class="slide-content">
+                <div class="flex justify-center items-center space-x-6 mb-6">
+                    <img src="https://placehold.co/120x60/005F73/FFFFFF?text=OKI+Palembang" alt="OKI Palembang Logo" class="h-12 rounded-md shadow-sm">
+                    <img src="https://placehold.co/120x60/0A9396/FFFFFF?text=Equira+Life" alt="Equira Life Logo" class="h-12 rounded-md shadow-sm">
+                    <img src="https://placehold.co/120x60/94D2BD/005F73?text=Loop+Health" alt="Loop Health Logo" class="h-12 rounded-md shadow-sm">
+                </div>
+                <h1 class="text-4xl md:text-5xl font-extrabold brand-text-primary mb-2">Empowering Health: OKI x Equira x Loop Program Report</h1>
+                <p class="text-lg md:text-xl text-gray-600">Screening & Month 1 Progress Report</p>
+                <p class="mt-4 text-base brand-text-secondary font-semibold">A better performing workforce starts with healthier employees</p>
+                <p class="text-sm text-gray-500 mt-1">Program Launch: June 19, 2025</p>
+            </div>
+        </section>
+        
+        <!-- Slide 2: Screening Summary & Eligibility -->
+        <section class="slide" id="slide-2">
+            <div class="slide-content bg-white rounded-2xl shadow-lg p-6 md:p-8">
+                <h2 class="text-2xl md:text-3xl font-extrabold brand-text-primary mb-6 text-center">Screening Summary & Eligibility</h2>
+                <p class="text-center max-w-3xl mx-auto mb-8 text-gray-600">
+                    In collaboration with OKI and Equira Life, Loop Health conducted a pre-program screening to identify employees living with or at risk of diabetes, ensuring targeted support for those who need it most.
+                </p>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8 items-center">
+                    <div class="p-6 bg-sky-50 rounded-lg border-2 border-sky-200 text-center">
+                        <p class="text-6xl font-extrabold brand-text-primary">93</p>
+                        <h3 class="text-xl font-bold text-sky-800 mt-2">Employees Identified</h3>
+                        <p class="text-sky-700 mt-1 text-sm">from MCU + claims data, invited to onboarding.</p>
+                    </div>
+                    <div class="p-6 bg-sky-50 rounded-lg border-2 border-sky-200 text-center">
+                        <p class="text-6xl font-extrabold brand-text-primary">47</p>
+                        <h3 class="text-xl font-bold text-sky-800 mt-2">Attended In Person</h3>
+                        <p class="text-sky-700 mt-1 text-sm">for baseline HbA1c testing and program overview.</p>
+                    </div>
+                    <div class="p-6 bg-sky-50 rounded-lg border-2 border-sky-200 text-center">
+                        <p class="text-6xl font-extrabold brand-text-primary">45</p>
+                        <h3 class="text-xl font-bold text-sky-800 mt-2">Enrolled in DMP</h3>
+                        <p class="text-sky-700 mt-1 text-sm">Demonstrating strong interest and commitment to the Diabetes Management Program.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Slide 3: HbA1c Results Overview -->
+        <section class="slide" id="slide-3">
+            <div class="slide-content bg-white rounded-2xl shadow-lg p-6 md:p-8">
+                <h2 class="text-2xl md:text-3xl font-extrabold brand-text-primary mb-6 text-center">HbA1c Results Overview</h2>
+                 <p class="text-center max-w-3xl mx-auto mb-4 text-gray-600">
+                    The chart below illustrates the distribution of baseline HbA1c results for the 45 enrolled participants, providing a foundational understanding of their current blood sugar control.
+                </p>
+                <div class="chart-container">
+                    <canvas id="hba1cChart"></canvas>
+                </div>
+                <div class="mt-6 p-4 bg-gray-50 rounded-lg border border-gray-200">
+                    <h3 class="font-bold text-xl brand-text-secondary mb-2">HbA1c Breakdown (of 45 enrolled):</h3>
+                    <ul class="list-disc list-inside text-gray-700 space-y-1">
+                        <li><strong class="brand-text-primary">28 participants</strong> (62%) had HbA1c ≥ 6.5% (indicating diabetes).</li>
+                        <li><strong class="brand-text-primary">8 participants</strong> (18%) had HbA1c between 5.7–6.4% (indicating prediabetes).</li>
+                        <li><strong class="brand-text-primary">9 participants</strong> (20%) had HbA1c < 5.7% (indicating normal blood sugar levels; ongoing monitoring is crucial as HbA1c levels can fluctuate).</li>
+                    </ul>
+                    <p class="text-sm text-gray-500 mt-4">
+                        All 45 participants were selected for enrollment based on a confirmed diabetes diagnosis through Medical Check-Ups (MCUs) or medical claims data.
+                    </p>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Slide 4: Program Overview – DMP -->
+        <section class="slide" id="slide-4">
+            <div class="slide-content bg-white rounded-2xl shadow-lg p-6 md:p-8">
+                <h2 class="text-2xl md:text-3xl font-extrabold brand-text-primary mb-6 text-center">Program Overview – DMP</h2>
+                <p class="text-center max-w-3xl mx-auto mb-8 text-gray-600">
+                    The Diabetes Management Program (DMP) is a core offering of Loop Health, providing structured and continuous support to empower individuals in managing their diabetes effectively.
+                </p>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+                    <div class="p-6">
+                        <h3 class="font-bold text-xl brand-text-secondary mb-3">The DMP Includes:</h3>
+                        <ul class="space-y-2 text-gray-600">
+                            <li class="flex items-start"><span class="brand-text-accent mr-3 text-xl">🩺</span><div>Regular health coach video consultations for personalized guidance.</div></li>
+                            <li class="flex items-start"><span class="brand-text-accent mr-3 text-xl">📱</span><div>Daily logging via the Loop app and glucometer-enabled blood sugar tracking for consistent monitoring.</div></li>
+                            <li class="flex items-start"><span class="brand-text-accent mr-3 text-xl">💬</span><div>Personalized habit feedback, educational content, and wellness tips delivered through the app and WhatsApp.</div></li>
+                            <li class="flex items-start"><span class="brand-text-accent mr-3 text-xl">🌐</span><div>WhatsApp follow-ups specifically designed to support those with limited app connectivity.</div></li>
+                        </ul>
+                    </div>
+                    <div class="p-6 bg-sky-50 rounded-lg border-2 border-sky-200 text-center">
+                        <p class="text-5xl font-extrabold brand-text-primary">🎯</p>
+                        <h3 class="text-xl font-bold text-sky-800 mt-2">Program Goal</h3>
+                        <p class="text-sky-700 mt-1 text-sm">To improve blood sugar control through consistent digital care and personalized coaching, fostering sustainable health behaviors.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Slide 5: Program Enrollment & Follow-Up Plan -->
+        <section class="slide" id="slide-5">
+            <div class="slide-content bg-white rounded-2xl shadow-lg p-6 md:p-8">
+                <h2 class="text-2xl md:text-3xl font-extrabold brand-text-primary mb-6 text-center">Program Enrollment & Follow-Up Plan</h2>
+                 <p class="text-center max-w-3xl mx-auto mb-8 text-gray-600">
+                    As of July 17, 2025, the initial enrollment phase is complete, and a clear plan is in place for ongoing monitoring and support to ensure long-term success and data validation.
+                </p>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                    <div class="bg-white rounded-2xl shadow-lg p-6">
+                        <h3 class="font-bold text-xl brand-text-secondary mb-4">Current Status:</h3>
+                        <ul class="space-y-2 text-gray-600 list-disc list-inside">
+                            <li><strong class="brand-text-primary">45 participants</strong> successfully onboarded into the DMP.</li>
+                            <li><strong class="brand-text-primary">Baseline HbA1c testing</strong> for all attendees has been completed, providing crucial initial health markers.</li>
+                            <li><strong class="brand-text-primary">15 extra Loop Health Kits</strong> were left with OKI HR for future additional onboarding, enabling flexible program expansion.</li>
+                        </ul>
+                    </div>
+                    <div class="bg-white rounded-2xl shadow-lg p-6">
+                        <h3 class="font-bold text-xl brand-text-secondary mb-4">Follow-Up Plan:</h3>
+                        <ul class="space-y-2 text-gray-600 list-disc list-inside">
+                            <li><strong class="brand-text-primary">Follow-up HbA1c testing</strong> is strategically planned for Month 6 and Month 12 to rigorously validate long-term clinical outcomes.</li>
+                            <li>The program is designed to support <strong class="brand-text-primary">day-to-day behavior change</strong>, fostering consistent healthy habits.</li>
+                            <li>It also focuses on <strong class="brand-text-primary">long-term outcome tracking</strong>, ensuring measurable improvements in employee health and well-being.</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Slide 6: Documentation – Onboarding Day Video -->
+        <section class="slide" id="slide-6">
+            <div class="slide-content bg-white rounded-2xl shadow-lg p-6 md:p-8">
+                <h2 class="text-2xl md:text-3xl font-extrabold brand-text-primary mb-6 text-center">Documentation – Onboarding Day Video</h2>
+                <p class="text-center max-w-3xl mx-auto mb-8 text-gray-600">
+                    Relive the energy and commitment from the program's kickoff! This video captures the key moments from the onboarding day.
+                </p>
+                <div class="flex justify-center items-center w-full max-w-2xl mx-auto rounded-lg overflow-hidden relative" style="height: 315px;">
+                    <iframe width="100%" height="100%" src="https://www.youtube.com/embed/DZa4CzvkZnA?si=swKBn90x3kxYzGlc" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                </div>
+            </div>
+        </section>
+
+        <!-- Slide 7: Photo Highlights from the Field -->
+        <section class="slide" id="slide-7">
+            <div class="slide-content bg-white rounded-2xl shadow-lg p-6 md:p-8">
+                <h2 class="text-2xl md:text-3xl font-extrabold brand-text-primary mb-6 text-center">Photo Highlights from the Field</h2>
+                <p class="text-center max-w-3xl mx-auto mb-8 text-gray-600">
+                    A visual journey through the in-person onboarding event, showcasing the direct engagement and support provided to employees.
+                </p>
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                    <div class="bg-gray-200 rounded-lg h-48 flex items-center justify-center text-gray-500">Photo 1: Screening</div>
+                    <div class="bg-gray-200 rounded-lg h-48 flex items-center justify-center text-gray-500">Photo 2: Health Talk</div>
+                    <div class="bg-gray-200 rounded-lg h-48 flex items-center justify-center text-gray-500">Photo 3: App Setup</div>
+                    <div class="bg-gray-200 rounded-lg h-48 flex items-center justify-center text-gray-500">Photo 4: Glucometer Distribution</div>
+                    <div class="bg-gray-200 rounded-lg h-48 flex items-center justify-center text-gray-500">Photo 5: Coaching Demo</div>
+                    <div class="bg-gray-200 rounded-lg h-48 flex items-center justify-center text-gray-500">Photo 6: Group Session</div>
+                </div>
+                <p class="text-sm text-gray-500 mt-4 text-center">Photos pulled from shared Google Drive folder (Drive Link Placeholder)</p>
+            </div>
+        </section>
+        
+        <!-- Slide 8: Program Progress -->
+        <section class="slide" id="slide-8">
+            <div class="slide-content">
+                <h2 class="text-2xl md:text-3xl font-extrabold brand-text-primary mb-6 text-center">Program Progress</h2>
+                 <p class="text-center max-w-3xl mx-auto mb-8 text-gray-600">
+                    The first month has seen significant progress in participant engagement, alongside the implementation of new strategies to overcome initial challenges.
+                </p>
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                    <div class="kpi-card">
+                        <p class="text-5xl font-extrabold brand-text-accent">21</p>
+                        <h3 class="font-bold mt-2 brand-text-primary">Active Users</h3>
+                        <p class="text-sm text-gray-500">continuing to engage in Week 4.</p>
+                    </div>
+                     <div class="kpi-card">
+                        <p class="text-5xl font-extrabold brand-text-accent">💬</p>
+                        <h3 class="font-bold mt-2 brand-text-primary">WhatsApp Follow-ups</h3>
+                        <p class="text-sm text-gray-500">Successfully rolled out to enhance connectivity.</p>
+                    </div>
+                     <div class="kpi-card">
+                        <p class="text-5xl font-extrabold brand-text-accent">🎁</p>
+                        <h3 class="font-bold mt-2 brand-text-primary">Incentives Introduced</h3>
+                        <p class="text-sm text-gray-500">To boost app usage and tracking consistency.</p>
+                    </div>
+                    <div class="kpi-card bg-amber-50 border-amber-200">
+                        <p class="text-5xl font-extrabold text-amber-500">⚠</p>
+                        <h3 class="font-bold mt-2 text-amber-800">Dorm Wi-Fi Barrier</h3>
+                        <p class="text-sm text-amber-600">Limits access to the app and video calls; a key area for HR collaboration.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Slide 9: Engagement Snapshot -->
+        <section class="slide" id="slide-9">
+            <div class="slide-content bg-white rounded-2xl shadow-lg p-6 md:p-8">
+                <h2 class="text-2xl md:text-3xl font-extrabold brand-text-primary mb-6 text-center">Engagement Snapshot</h2>
+                 <p class="text-center max-w-3xl mx-auto mb-8 text-gray-600">
+                    A detailed look at user activity highlights the level of engagement and interaction within the program during its first month. All metrics presented are per month.
+                </p>
+                <div class="overflow-x-auto rounded-lg shadow-md">
+                    <table class="w-full text-left whitespace-nowrap">
+                        <thead>
+                            <tr>
+                                <th class="p-3 brand-bg-secondary text-white rounded-tl-lg">Engagement Metric</th>
+                                <th class="p-3 brand-bg-secondary text-white rounded-tr-lg">Value</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td class="p-3">Active Users</td>
+                                <td class="p-3 font-semibold">21</td>
+                            </tr>
+                            <tr class="bg-gray-50">
+                                <td class="p-3">Average Logs per Active User</td>
+                                <td class="p-3 font-semibold">~37 <span class="text-gray-500 text-xs">(feature usage incl. blood sugar, physical activity, weight, food)</span></td>
+                            </tr>
+                            <tr>
+                                <td class="p-3">Total Logs Submitted</td>
+                                <td class="p-3 font-semibold">782 <span class="text-gray-500 text-xs">(across all onboarded employees)</span></td>
+                            </tr>
+                            <tr class="bg-gray-50">
+                                <td class="p-3">Most Active User</td>
+                                <td class="p-3 font-semibold">115 logs (S.)</td>
+                            </tr>
+                            <tr>
+                                <td class="p-3">Average Health Coach Consultations</td>
+                                <td class="p-3 font-semibold">2.3 per user</td>
+                            </tr>
+                            <tr class="bg-gray-50">
+                                <td class="p-3">Average Blood Sugar Readings</td>
+                                <td class="p-3 font-semibold">7.6 per user</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <p class="text-sm text-gray-500 mt-4 text-center">Note: Total logs include contributions from users who may no longer be active.</p>
+            </div>
+        </section>
+        
+        <!-- Slide 10: Early Health & Lifestyle Indicators -->
+        <section class="slide" id="slide-10">
+            <div class="slide-content">
+                <h2 class="text-2xl md:text-3xl font-extrabold brand-text-primary mb-6 text-center">Early Health & Lifestyle Indicators</h2>
+                 <p class="text-center max-w-3xl mx-auto mb-8 text-gray-600">
+                    While definitive clinical outcomes require longer-term data, the first month's anecdotal evidence shows promising shifts in key health metrics and highlights opportunities for enhancing lifestyle engagement.
+                </p>
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                    <div class="kpi-card">
+                        <div class="relative w-32 h-32 mx-auto">
+                            <canvas id="bsReductionChart"></canvas>
+                            <div class="absolute inset-0 flex items-center justify-center text-3xl font-extrabold brand-text-primary">65%</div>
+                        </div>
+                        <h3 class="font-bold mt-2 brand-text-primary">Showed Blood Sugar Reductions</h3>
+                        <p class="text-sm text-gray-500">Of users who actively logged blood sugar readings (approx. 14 out of 21 active users showed reductions).</p>
+                    </div>
+                    <div class="kpi-card brand-bg-secondary text-white">
+                        <p class="text-5xl font-extrabold">Avg. 23.5<span class="text-3xl">mg/dL</span></p>
+                        <h3 class="font-bold mt-2">Avg. BS Reduction</h3>
+                        <p class="text-sm text-white/80">Combined average reduction in Fasting (GDP) and Random (GDS) Blood Sugar.</p>
+                    </div>
+                    <div class="kpi-card">
+                         <div class="relative w-32 h-32 mx-auto">
+                            <canvas id="weightLossChart"></canvas>
+                            <div class="absolute inset-0 flex items-center justify-center text-3xl font-extrabold brand-text-primary">60%</div>
+                        </div>
+                        <h3 class="font-bold mt-2 brand-text-primary">Recorded Weight Loss</h3>
+                        <p class="text-sm text-gray-500">Of users who consistently logged their weight (4 out of 7 users recorded weight loss).</p>
+                    </div>
+                </div>
+                <div class="mt-8 text-center max-w-3xl mx-auto">
+                    <h3 class="font-bold text-xl brand-text-primary mb-4">Notable Individual Improvements:</h3>
+                    <ul class="list-disc list-inside text-gray-600 space-y-2">
+                        <li><strong class="font-semibold">M.:</strong> GDS reduced from <strong class="font-semibold">327 → 227 mg/dL</strong>.</li>
+                        <li><strong class="font-semibold">A.F.:</strong> GDS reduced from <strong class="font-semibold">361 → 132 mg/dL</strong>.</li>
+                    </ul>
+                    <h3 class="font-bold text-xl brand-text-primary mt-6 mb-4">Detailed Average Blood Sugar Reduction:</h3>
+                    <ul class="list-disc list-inside text-gray-600 space-y-2">
+                        <li><strong class="font-semibold">GDP (Glukosa Darah Puasa / Fasting Blood Sugar):</strong> <strong class="font-semibold">12.4 mg/dL</strong> reduction.</li>
+                        <li><strong class="font-semibold">GDS (Glukosa Darah Sewaktu / Random Blood Sugar):</strong> <strong class="font-semibold">34.6 mg/dL</strong> reduction, which could indicate improvement.</li>
+                    </ul>
+                    <p class="text-sm text-gray-500 mt-4">Note: HbA1c testing is scheduled for Month 6 and Month 12 to validate long-term clinical outcomes.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Slide 11: Lifestyle Engagement Snapshot -->
+        <section class="slide" id="slide-11">
+            <div class="slide-content bg-white rounded-2xl shadow-lg p-6 md:p-8">
+                <h2 class="text-2xl md:text-3xl font-extrabold brand-text-primary mb-6 text-center">Lifestyle Engagement Snapshot</h2>
+                <p class="text-center max-w-3xl mx-auto mb-8 text-gray-600">
+                    Beyond core blood sugar and weight tracking, we're observing early signs of lifestyle interest, but also clear areas for growth in broader self-care behavior.
+                </p>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                    <div class="p-6 bg-gray-50 rounded-lg border-2 brand-border-primary">
+                        <h3 class="font-bold text-xl brand-text-secondary mb-4">Current Lifestyle Tracking:</h3>
+                        <ul class="list-disc list-inside text-gray-600 space-y-2">
+                            <li><strong class="font-semibold">7 users</strong> logged body weight, with <strong class="font-semibold">4</strong> of them recording weight loss.</li>
+                            <li>Food and physical activity tracking are currently limited, indicating an area for increased focus.</li>
+                        </ul>
+                    </div>
+                    <div class="p-6 bg-gray-50 rounded-lg border-2 brand-border-primary">
+                        <h3 class="font-bold text-xl brand-text-secondary mb-4">Opportunity for Growth:</h3>
+                        <p class="text-gray-600">
+                            To encourage broader lifestyle tracking and self-care behavior, we plan to launch weekly themed challenges (e.g., “Food Log Friday” or “Step Count Week”). These will be combined with coach-led prompts and group discussions to foster consistent engagement and habit formation.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Slide 12: Opportunities Ahead -->
+        <section class="slide" id="slide-12">
+            <div class="slide-content brand-bg-primary text-white rounded-2xl shadow-lg p-6 md:p-8">
+                 <h2 class="text-2xl md:text-3xl font-extrabold mb-6 text-center">Opportunities Ahead</h2>
+                 <p class="text-center max-w-3xl mx-auto mb-8 text-gray-200">
+                    To build on this early traction and maximize the program's impact, we have identified several key opportunities for growth and improvement.
+                </p>
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 text-center max-w-5xl mx-auto">
+                    <div class="p-4 bg-white/10 rounded-lg">
+                        <p class="font-bold text-3xl brand-text-accent mb-2">📍</p>
+                        <p class="font-semibold">Site Expansion</p>
+                        <p class="text-sm text-white/80 mt-1">Roll out the program in Jambi and Perawang, leveraging strong pilot engagement since July 2023 for demonstrated sustainability and outcomes.</p>
+                    </div>
+                     <div class="p-4 bg-white/10 rounded-lg">
+                        <p class="font-bold text-3xl brand-text-accent mb-2">👥</p>
+                        <p class="font-semibold">Additional OKI Enrollments</p>
+                        <p class="text-sm text-white/80 mt-1">Utilize the 15 Loop Health Kits provided to OKI Palembang HR for remote onboarding of eligible employees who missed the in-person session.</p>
+                    </div>
+                     <div class="p-4 bg-white/10 rounded-lg">
+                        <p class="font-bold text-3xl brand-text-accent mb-2">📶</p>
+                        <p class="font-semibold">Improve Connectivity</p>
+                        <p class="text-sm text-white/80 mt-1">Coordinate with HR to enhance Wi-Fi access in dorms, directly addressing a main barrier to consistent app and video call engagement.</p>
+                    </div>
+                     <div class="p-4 bg-white/10 rounded-lg">
+                        <p class="font-bold text-3xl brand-text-accent mb-2">🔄</p>
+                        <p class="font-semibold">Expand to DPP</p>
+                        <p class="text-sm text-white/80 mt-1">Introduce the Digital Prevention Program (DPP) for employees at high risk (e.g., prediabetic or with high BMI) who are not yet diagnosed with diabetes, broadening our impact.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </div>
+
+    <footer class="navigation-controls">
+        <button id="prevSlide">Previous</button>
+        <span id="slideIndicator">Slide 1 of 12</span>
+        <button id="nextSlide">Next</button>
+    </footer>
+
+    <script>
+        let hba1cChartInstance = null;
+        let bsReductionChartInstance = null;
+        let weightLossChartInstance = null;
+        let currentSlide = 0;
+        const slides = document.querySelectorAll('.slide');
+        const slideIndicator = document.getElementById('slideIndicator');
+        const prevButton = document.getElementById('prevSlide');
+        const nextButton = document.getElementById('nextSlide');
+
+        const totalSlides = slides.length;
+
+        function updateSlideIndicator() {
+            slideIndicator.textContent = `Slide ${currentSlide + 1} of ${totalSlides}`;
+            prevButton.disabled = currentSlide === 0;
+            nextButton.disabled = currentSlide === totalSlides - 1;
+        }
+
+        function showSlide(index) {
+            slides.forEach((slide, i) => {
+                slide.classList.toggle('active', i === index);
+                if (i === index) {
+                    slide.scrollTop = 0; // Reset scroll position for new slide
+                }
+            });
+            currentSlide = index;
+            updateSlideIndicator();
+            // Re-render charts when their slide becomes active to ensure responsiveness
+            initializeCharts();
+        }
+
+        function nextSlide() {
+            if (currentSlide < totalSlides - 1) {
+                showSlide(currentSlide + 1);
+            }
+        }
+
+        function prevSlide() {
+            if (currentSlide > 0) {
+                showSlide(currentSlide - 1);
+            }
+        }
+
+        function initializeCharts() {
+            const tooltipTitleCallback = (tooltipItems) => {
+                const item = tooltipItems[0];
+                let label = item.chart.data.labels[item.dataIndex];
+                if (Array.isArray(label)) {
+                  return label.join(' ');
+                } else {
+                  return label;
+                }
+            };
+            
+            const sharedChartOptions = {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    legend: {
+                        display: false
+                    },
+                    tooltip: {
+                        enabled: true,
+                        callbacks: {
+                           title: tooltipTitleCallback
+                        },
+                        backgroundColor: '#005F73',
+                        titleFont: { weight: 'bold' },
+                        bodyFont: { size: 14 },
+                        padding: 12,
+                        cornerRadius: 8,
+                    }
+                }
+            };
+            
+            const sharedDoughnutOptions = {
+                ...sharedChartOptions,
+                cutout: '80%',
+                plugins: {
+                     legend: { display: false },
+                     tooltip: {
+                        ...sharedChartOptions.plugins.tooltip,
+                         callbacks: {
+                            title: tooltipTitleCallback,
+                            label: function(context) {
+                                 return `${context.label}: ${context.raw}%`;
+                             }
+                         }
+                     }
+                }
+            };
+
+            // HbA1c Chart
+            const hba1cCanvas = document.getElementById('hba1cChart');
+            if (hba1cCanvas && hba1cCanvas.closest('.slide.active')) {
+                if (hba1cChartInstance) {
+                    hba1cChartInstance.destroy();
+                }
+                const hba1cCtx = hba1cCanvas.getContext('2d');
+                hba1cChartInstance = new Chart(hba1cCtx, {
+                    type: 'doughnut',
+                    data: {
+                        labels: ['HbA1c ≥ 6.5% (Diabetes)', 'HbA1c 5.7–6.4% (Prediabetes)', 'HbA1c < 5.7% (Normal)'],
+                        datasets: [{
+                            data: [28, 8, 9],
+                            backgroundColor: ['#005F73', '#0A9396', '#94D2BD'],
+                            borderColor: ['#f0f4f8'],
+                            borderWidth: 4,
+                            hoverOffset: 4
+                        }]
+                    },
+                    options: {
+                        ...sharedDoughnutOptions,
+                        plugins: {
+                            ...sharedDoughnutOptions.plugins,
+                            legend: {
+                                display: true,
+                                position: 'bottom',
+                                labels: {
+                                    font: {
+                                        size: 12,
+                                        family: 'Inter',
+                                        weight: '500'
+                                    },
+                                    color: '#4a5568',
+                                    boxWidth: 15,
+                                    padding: 15
+                                }
+                            },
+                            tooltip: {
+                                ...sharedDoughnutOptions.plugins.tooltip,
+                                callbacks: {
+                                    ...sharedDoughnutOptions.plugins.tooltip.callbacks,
+                                    label: function(context) {
+                                        let label = context.label || '';
+                                        if (label) {
+                                            label += ': ';
+                                        }
+                                        if (context.raw !== null) {
+                                            label += context.raw + ' participants';
+                                        }
+                                        return label;
+                                    }
+                                }
+                            }
+                        }
+                    }
+                });
+            } else if (hba1cChartInstance) {
+                hba1cChartInstance.destroy();
+                hba1cChartInstance = null;
+            }
+
+            const bsReductionCanvas = document.getElementById('bsReductionChart');
+            if (bsReductionCanvas && bsReductionCanvas.closest('.slide.active')) {
+                if (bsReductionChartInstance) {
+                    bsReductionChartInstance.destroy();
+                }
+                const bsReductionCtx = bsReductionCanvas.getContext('2d');
+                bsReductionChartInstance = new Chart(bsReductionCtx, {
+                    type: 'doughnut',
+                    data: {
+                        labels: ['Showed Reduction', 'No Reduction/No Data'],
+                        datasets: [{
+                            data: [65, 35],
+                            backgroundColor: ['#0A9396', '#E9D8A6'],
+                            borderColor: ['#f0f4f8'],
+                            borderWidth: 4,
+                            hoverOffset: 4
+                        }]
+                    },
+                    options: sharedDoughnutOptions
+                });
+            } else if (bsReductionChartInstance) {
+                bsReductionChartInstance.destroy();
+                bsReductionChartInstance = null;
+            }
+            
+            const weightLossCanvas = document.getElementById('weightLossChart');
+            if (weightLossCanvas && weightLossCanvas.closest('.slide.active')) {
+                if (weightLossChartInstance) {
+                    weightLossChartInstance.destroy();
+                }
+                const weightLossCtx = weightLossCanvas.getContext('2d');
+                weightLossChartInstance = new Chart(weightLossCtx, {
+                    type: 'doughnut',
+                    data: {
+                        labels: ['Recorded Loss', 'No Loss/No Data'],
+                        datasets: [{
+                            data: [60, 40],
+                            backgroundColor: ['#0A9396', '#E9D8A6'],
+                            borderColor: ['#f0f4f8'],
+                            borderWidth: 4,
+                            hoverOffset: 4
+                        }]
+                    },
+                    options: sharedDoughnutOptions
+                });
+            } else if (weightLossChartInstance) {
+                weightLossChartInstance.destroy();
+                weightLossChartInstance = null;
+            }
+        }
+
+        prevButton.addEventListener('click', prevSlide);
+        nextButton.addEventListener('click', nextSlide);
+
+        // Keyboard navigation
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'ArrowRight') {
+                nextSlide();
+            } else if (e.key === 'ArrowLeft') {
+                prevSlide();
+            }
+        });
+
+        // Initial setup
+        showSlide(0); // Show the first slide
+        initializeCharts(); // Initialize charts for the first slide
+    </script>
+</body>
+</html>
